@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박상무의 맛집기행</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Firebase 초기화 -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAkAjfR9z9Xs_20lDHlwe3GYnUOeTLulok",
+            authDomain: "matzip-58318.firebaseapp.com",
+            projectId: "matzip-58318",
+            storageBucket: "matzip-58318.firebasestorage.app",
+            messagingSenderId: "456730726664",
+            appId: "1:456730726664:web:de72d61a0d8c33873c9cbd"
+        };
+
+        // Firebase 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Firebase 함수들을 전역으로 사용할 수 있도록 설정
+        window.db = db;
+        window.collection = collection;
+        window.addDoc = addDoc;
+        window.getDocs = getDocs;
+        window.updateDoc = updateDoc;
+        window.deleteDoc = deleteDoc;
+        window.doc = doc;
+        window.query = query;
+        window.where = where;
+        window.getDoc = getDoc;
+    </script>
+</head>
+<body>
+    <header>
+        <h1>박상무의 맛집기행</h1>
+    </header>
+    <nav>
+        <input type="text" id="search-input" placeholder="식당 이름 또는 지역 검색">
+        <button id="search-button">검색</button>
+    </nav>
+    <main>
+        <div id="loading">데이터를 불러오는 중...</div>
+        <div id="restaurant-list"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 박상무의 맛집기행. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
